@@ -58,8 +58,4 @@ public abstract class Parser {
 		return widgetGraphs;
 	}
 	
-	public StringAdministrator getStringAdministrator() {
-		return stringAdministrator;
-	}
-	
 }

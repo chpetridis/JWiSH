@@ -122,14 +122,19 @@ public class ParserAST extends Parser {
 	}
 	
 	private void createMultiLevelNode(String addingComponent, String addedComponent) {
+		int newLevel = builder.findNode(addedComponent).getNodeLevel();
+		
 		if (!multiLevelComponents.contains(addingComponent)) {
-			WDGNode oldNode = builder.findNode(addingComponent);
-			builder.getAllNodes().remove(oldNode);
+			WDGNode oldPrimitiveNode = builder.findNode(addingComponent);
+			builder.getAllNodes().remove(oldPrimitiveNode);
 			builder.addNode(addingComponent, "Composite");
-			builder.findNode(addingComponent).setOriginNode(oldNode);
-			if (!(oldNode.getParent() == null)){
-				oldNode.getParent().addSubNode(builder.findNode(addingComponent));
-				((CompositeNode) oldNode.getParent()).getSubNodes().remove(oldNode);
+			WDGNode newCompositeNode = builder.findNode(addingComponent);
+			newCompositeNode.setOriginNode(oldPrimitiveNode);
+			newCompositeNode.setNodeLevel(newLevel + 1);
+			
+			if (!(oldPrimitiveNode.getParent() == null)){
+				oldPrimitiveNode.getParent().addSubNode(newCompositeNode);
+				((CompositeNode) oldPrimitiveNode.getParent()).getSubNodes().remove(oldPrimitiveNode);
 			}
 			multiLevelComponents.add(addingComponent);
 		}
