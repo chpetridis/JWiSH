@@ -9,6 +9,7 @@ public class PrimitiveNode extends WDGNode{
 	
 	public PrimitiveNode(String nodeID) {
 		super (nodeID);
+		this.setNodeLevel(0);
 	}
 	
 	public void addFragment(String fragment, int fragmentLength, int fragmentStartPosition) {

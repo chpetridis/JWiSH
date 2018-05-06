@@ -20,12 +20,30 @@ public class CompositeNode extends WDGNode{
 		return originNode.getFragments();
 	}
 	
-	public void addSubNode(WDGNode node) {
-		if (subNodes.contains(node)) {
+	public WDGNode getOriginNode() {
+		return originNode;
+	}
+	
+	public void addSubNode(WDGNode subNode) {
+		if (subNodes.contains(subNode)) {
 			return;
 		}
-		subNodes.add(node);
-		node.setParent(this);
+		subNodes.add(subNode);
+		subNode.setParent(this);
+		updateLevel(subNode);
+	}
+	
+	private void updateLevel(WDGNode subNode) {
+		if (subNode.getNodeLevel() >= this.getNodeLevel()) {
+			this.setNodeLevel(subNode.getNodeLevel() + 1);
+			informParentForChange();
+		}
+	}
+	
+	private void informParentForChange() {
+		if (!(this.getParent() == null)) {
+			((CompositeNode)this.getParent()).updateLevel(this);
+		}
 	}
 	
 	public void setOriginNode(WDGNode node) {

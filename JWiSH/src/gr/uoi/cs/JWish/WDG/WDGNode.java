@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public abstract class WDGNode {
 	protected String nodeID;
 	protected WDGNode parent;
+	private int nodeLevel;
 	
 	abstract public void printNodeInfo(PrintWriter outputStream);
 	abstract public void addFragment(String fragment, int fragmentLength, int fragmentStartPosition);
@@ -29,4 +30,13 @@ public abstract class WDGNode {
 	public WDGNode getParent() {
 		return parent;
 	}
+	
+	public int getNodeLevel() {
+		return nodeLevel;
+	}
+	
+	public void setNodeLevel(int nodeLevel) {
+		this.nodeLevel = nodeLevel;
+	}
+	
 }
