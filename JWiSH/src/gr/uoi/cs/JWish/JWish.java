@@ -20,17 +20,14 @@ public class JWish {
 		Parser parser = factory.createParser("AST", PATH);
 		parser.setToolCriteriaSource("SWT");
 		PrintWriter outputStream = null;
-		//Random rand = new Random();
-		
-		//long starttime = System.currentTimeMillis();
+
 		try {
 			parser.findEachFileSlices();
 		} catch (IOException e) {
 			System.out.println("Problem opening file.");
 			System.exit(0);
 		}
-		//double elapsedSeconds = (System.currentTimeMillis() - starttime) / 1000.0;
-		//System.out.println("Time passed: " + elapsedSeconds + " seconds");
+
 		
 		try {
 			outputStream = new PrintWriter(new FileOutputStream("Slices.txt"));
