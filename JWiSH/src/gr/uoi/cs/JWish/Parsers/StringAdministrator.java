@@ -19,7 +19,7 @@ public class StringAdministrator {
 		for (char character : constructorText.toCharArray()) {
 			if (foundStartPoint) {
 				if (character == firstBreakPoint || character == secondBreakPoint) {
-						break;
+					break;
 				}
 				componentName += character;
 			}
@@ -47,9 +47,9 @@ public class StringAdministrator {
 	
 	private boolean isJavaStandardType(String type) {
 		return type.equals("private") || type.equals("public")
-			   || type.equals("protected")
-			   || type.equals("static")
-			   || type.equals("final");
+			   		      || type.equals("protected")
+			  		      || type.equals("static")
+			  		      || type.equals("final");
 	}
 	
 	private String takeFurtherActions(String componentType) {
