@@ -8,7 +8,7 @@ public class NodeFactory {
 		} else if (nodeType.equals("Primitive")) {
 			return new PrimitiveNode(nodeID);
 		} else {
-	    	return null;
+	    		return null;
 		}
 	}
 
