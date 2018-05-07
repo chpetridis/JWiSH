@@ -142,9 +142,8 @@ public class ParserAST extends Parser {
 	}
 	
 	private void addFragmentToNode(ASTNode node, String nodeName) {
-		builder.findNode(nodeName).addFragment(node.getParent().toString(), 
-											   node.getParent().getLength(),
-											   node.getParent().getStartPosition());
+		builder.findNode(nodeName).addFragment(node.getParent().toString(),  node.getParent().getLength(),
+										     node.getParent().getStartPosition());
 	}
 	
 	private boolean isComponent(String componentID) {
@@ -152,7 +151,7 @@ public class ParserAST extends Parser {
 	}
 	
 	private boolean isInvalid(QualifiedName node) {
-		return node.getParent().getNodeType() == ASTNode.CLASS_INSTANCE_CREATION 
+		return  node.getParent().getNodeType() == ASTNode.CLASS_INSTANCE_CREATION 
 			|| node.getParent().getNodeType() == ASTNode.INFIX_EXPRESSION;
 	}
 	
@@ -161,10 +160,7 @@ public class ParserAST extends Parser {
 	}
 	
 	private boolean isAloneDeclaration(VariableDeclarationFragment node) {
-		if (node.getInitializer() == null) {
-			return true;
-		}
-		return false;
+		return node.getInitializer() == null;
 	}
 
 }
