@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Random;
 
 import gr.uoi.cs.JWish.Parsers.Parser;
 import gr.uoi.cs.JWish.Parsers.ParserFactory;
@@ -18,16 +17,17 @@ public class JWish {
 	public static void main(String[] args) {
 		ParserFactory factory = new ParserFactory();
 		Parser parser = factory.createParser("AST", PATH);
-		parser.setToolCriteriaSource("SWT");
+		parser.setToolCriteriaSource("Swing");
 		PrintWriter outputStream = null;
-
+		
+		//long starttime = System.nanoTime();
 		try {
 			parser.findEachFileSlices();
 		} catch (IOException e) {
 			System.out.println("Problem opening file.");
 			System.exit(0);
 		}
-
+		//System.out.println("Time passed: " + ((System.nanoTime() - starttime)/ 1000000000.0) + " seconds");
 		
 		try {
 			outputStream = new PrintWriter(new FileOutputStream("Slices.txt"));

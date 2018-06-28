@@ -8,19 +8,36 @@ public abstract class WDGNode {
 	protected String nodeID;
 	protected WDGNode parent;
 	private int nodeLevel;
+	private String widgetType;
+	protected ArrayList<SliceFragment> sliceFragments = new ArrayList<SliceFragment>();
 	
 	abstract public void printNodeInfo(PrintWriter outputStream);
-	abstract public void addFragment(String fragment, int fragmentLength, int fragmentStartPosition);
 	abstract public void addSubNode(WDGNode node);
-	abstract public void setOriginNode(WDGNode originSlice);
-	abstract public ArrayList<SliceFragment> getFragments();
 	
 	public WDGNode(String nodeID) {
 		this.nodeID = nodeID;
 	}
+	
+	public void addFragment(String fragment, int fragmentLength, int fragmentStartPosition) {
+		sliceFragments.add(new SliceFragment(fragment, fragmentLength, fragmentStartPosition));
+	}
+	
+	public ArrayList<SliceFragment> getFragments() {
+		return sliceFragments;
+	}
+	
+	public void transferStatements(ArrayList<SliceFragment> other) {
+		for (SliceFragment fragment : other) {
+			this.sliceFragments.add(fragment);
+		}
+	}
 
 	public String getNodeID() {
 		return nodeID;
+	}
+	
+	public String getWidgetType() {
+		return widgetType;
 	}
 	
 	protected void setParent(WDGNode parent) {
@@ -37,6 +54,10 @@ public abstract class WDGNode {
 	
 	public void setNodeLevel(int nodeLevel) {
 		this.nodeLevel = nodeLevel;
+	}
+	
+	public void setWidgetType(String widgetType) {
+		this.widgetType = widgetType;
 	}
 	
 }

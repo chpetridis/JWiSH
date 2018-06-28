@@ -6,7 +6,7 @@ public class SWTCriteria extends ToolSpecificCriteria{
 		super (toolID);
 	}
 	
-	protected void initializeCriteria() {
+	protected void initializeComponentAdditionEvent() {
 		criteria.add("Widget");
 		criteria.add("Composite");
 		criteria.add("Canvas");

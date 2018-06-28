@@ -6,7 +6,7 @@ public class SwingCriteria extends ToolSpecificCriteria{
 		super (toolID);
 	}
 	
-	protected void initializeCriteria() {
+	protected void initializeComponentAdditionEvent() {
 		criteria.add("add");
 		criteria.add("addLayoutComponent");
 		criteria.add("addImpl");

@@ -8,12 +8,12 @@ public abstract class ToolSpecificCriteria {
 	protected HashSet<String> criteria = new HashSet<String>();
 	protected HashSet<String> toolWidgetTypes = new HashSet<String>();
 	
-	abstract protected void initializeCriteria();
+	abstract protected void initializeComponentAdditionEvent();
 	abstract protected void initializeWidgetNames();
 	
 	public ToolSpecificCriteria(String toolID) {
 		this.toolID = toolID;
-		initializeCriteria();
+		initializeComponentAdditionEvent();
 		initializeWidgetNames();
 	}
 	

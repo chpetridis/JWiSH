@@ -6,22 +6,9 @@ import java.util.ArrayList;
 
 public class CompositeNode extends WDGNode{
 	private ArrayList<WDGNode> subNodes = new ArrayList<WDGNode>();
-	private PrimitiveNode originNode;
 	
 	public CompositeNode(String nodeID) {
 		super (nodeID);
-	}
-	
-	public void addFragment(String fragment, int fragmentLength, int fragmentStartPosition) {
-		originNode.addFragment(fragment, fragmentLength, fragmentStartPosition);
-	}
-	
-	public ArrayList<SliceFragment> getFragments() {
-		return originNode.getFragments();
-	}
-	
-	public WDGNode getOriginNode() {
-		return originNode;
 	}
 	
 	public void addSubNode(WDGNode subNode) {
@@ -46,16 +33,15 @@ public class CompositeNode extends WDGNode{
 		}
 	}
 	
-	public void setOriginNode(WDGNode node) {
-		this.originNode = (PrimitiveNode) node;
-	}
-	
 	public ArrayList<WDGNode> getSubNodes() {
 		return subNodes;
 	}
 	
 	public void printNodeInfo(PrintWriter outputStream) {
-		originNode.printNodeInfo(outputStream);
+		outputStream.println("*************** SLICE OF " + nodeID + "*************");
+		for (SliceFragment fragment : sliceFragments) {
+			outputStream.println(fragment.getFragment());
+		}
 		outputStream.println("------------------Sub-Nodes info for: " + nodeID);
 		for (WDGNode subSlice : subNodes) {
 			subSlice.printNodeInfo(outputStream);

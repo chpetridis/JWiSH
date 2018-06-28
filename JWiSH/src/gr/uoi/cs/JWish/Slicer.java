@@ -2,7 +2,6 @@ package gr.uoi.cs.JWish;
 
 import java.util.ArrayList;
 
-import gr.uoi.cs.JWish.WDG.CompositeNode;
 import gr.uoi.cs.JWish.WDG.WDGBuilder;
 import gr.uoi.cs.JWish.WDG.WDGNode;
 
@@ -32,17 +31,18 @@ public class Slicer {
 		return specificLevelNodes;
 	}
 	
-	public ArrayList<WDGNode> getAllPrimitiveWidgets() {
-		ArrayList<WDGNode> specificLevelNodes = new ArrayList<WDGNode>();
+	public ArrayList<WDGNode> getSpecificLevelAndTypeWidgets(int level, String widgetType) {
+		ArrayList<WDGNode> specificLevelAndTypeNodes = new ArrayList<WDGNode>();
 		
 		for (WDGNode node : graph.getAllNodes()) {
-			if (node instanceof CompositeNode) {
-				specificLevelNodes.add(((CompositeNode) node).getOriginNode());
-			} else {
-				specificLevelNodes.add(node);
+			if (node.getWidgetType() == null) {
+				continue;
+			}
+			if (node.getNodeLevel() == level && node.getWidgetType().equals(widgetType)) {
+				specificLevelAndTypeNodes.add(node);
 			}
 		}
-		return specificLevelNodes;
+		return specificLevelAndTypeNodes;
 	}
 	
 	public WDGNode getMaxLevelWidget() throws NullPointerException{
@@ -56,6 +56,20 @@ public class Slicer {
 			}
 		}
 		return maxLevelWidget;
+	}
+	
+	public ArrayList<WDGNode> getAllWidgetsOfType(String widgetType) {
+		ArrayList<WDGNode> specificTypeNodes = new ArrayList<WDGNode>();
+		
+		for (WDGNode node : graph.getAllNodes()) {
+			if (node.getWidgetType() == null) {
+				continue;
+			}
+			if (node.getWidgetType().equals(widgetType)) {
+				specificTypeNodes.add(node);
+			}
+		}
+		return specificTypeNodes;
 	}
 
 }
