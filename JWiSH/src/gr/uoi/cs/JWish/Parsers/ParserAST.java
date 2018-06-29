@@ -119,7 +119,7 @@ public class ParserAST extends Parser {
 		
 		components.add(addingComponent);
 		builder.addNode(addingComponent, "Primitive");
-		builder.findNode(addingComponent).setWidgetType(widgetType);
+		builder.setWidgetType(addingComponent, widgetType);
 		addFragmentToNode(node, addingComponent);
 	}
 	
@@ -140,7 +140,7 @@ public class ParserAST extends Parser {
 			}
 			multiLevelComponents.add(addingComponent);
 		}
-		builder.findNode(addingComponent).addSubNode(builder.findNode(addedComponent));
+		builder.addSubNode(addingComponent, addedComponent);
 	}
 	
 	private void addFragmentToNode(ASTNode node, String nodeName) {

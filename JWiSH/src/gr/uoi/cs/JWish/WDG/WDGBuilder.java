@@ -20,6 +20,14 @@ public class WDGBuilder {
 		return null;
 	}
 	
+	public void setWidgetType(String nodeID, String widgetType) {
+		findNode(nodeID).setWidgetType(widgetType);
+	}
+	
+	public void addSubNode(String sourceNode, String destinationNode) {
+		findNode(sourceNode).addSubNode(findNode(destinationNode));
+	}
+	
 	public ArrayList<WDGNode> getAllNodes() {
 		return widgetNodes;
 	}

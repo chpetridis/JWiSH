@@ -4,11 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import gr.uoi.cs.JWish.Parsers.Parser;
 import gr.uoi.cs.JWish.Parsers.ParserFactory;
-import gr.uoi.cs.JWish.WDG.WDGBuilder;
 import gr.uoi.cs.JWish.WDG.WDGNode;
 
 public class JWish {
@@ -17,17 +15,17 @@ public class JWish {
 	public static void main(String[] args) {
 		ParserFactory factory = new ParserFactory();
 		Parser parser = factory.createParser("AST", PATH);
-		parser.setToolCriteriaSource("Swing");
+		parser.setToolCriteriaSource("SWT");
 		PrintWriter outputStream = null;
 		
-		//long starttime = System.nanoTime();
+		long starttime = System.nanoTime();
 		try {
 			parser.findEachFileSlices();
 		} catch (IOException e) {
 			System.out.println("Problem opening file.");
 			System.exit(0);
 		}
-		//System.out.println("Time passed: " + ((System.nanoTime() - starttime)/ 1000000000.0) + " seconds");
+		System.out.println("Time passed: " + ((System.nanoTime() - starttime)/ 1000000000.0) + " seconds");
 		
 		try {
 			outputStream = new PrintWriter(new FileOutputStream("Slices.txt"));
