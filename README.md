@@ -8,4 +8,5 @@ These slices can later be used by third party developers to automate some refact
 * Separate Event-Handling from Widget Initialization
 * Make widget Initialization methods (e.g. createButton())
 * Extract Class for a finer GUI structure
+* ...
 
