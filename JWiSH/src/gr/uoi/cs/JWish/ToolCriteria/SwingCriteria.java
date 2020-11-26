@@ -10,8 +10,8 @@ public class SwingCriteria extends ToolSpecificCriteria{
 		criteria.add("add");
 		criteria.add("addLayoutComponent");
 		criteria.add("addImpl");
-		criteria.add("JPanel");	// ??
-		criteria.add("Popup");	//  ??
+		criteria.add("JPanel");
+		criteria.add("Popup");
 	}
 	
 	 protected void initializeWidgetNames() {

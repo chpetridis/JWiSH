@@ -4,9 +4,9 @@ import java.util.HashSet;
 
 
 public abstract class ToolSpecificCriteria {
-	private String toolID;
-	protected HashSet<String> criteria = new HashSet<String>();
-	protected HashSet<String> toolWidgetTypes = new HashSet<String>();
+	private final String toolID;
+	protected HashSet<String> criteria = new HashSet<>();
+	protected HashSet<String> toolWidgetTypes = new HashSet<>();
 	
 	abstract protected void initializeComponentAdditionEvent();
 	abstract protected void initializeWidgetNames();
@@ -22,17 +22,11 @@ public abstract class ToolSpecificCriteria {
 	}
 	
 	public boolean meetsCriteria(String name) {
-		if (criteria.contains(name)) {
-			return true;
-		}
-		return false;
+		return criteria.contains(name);
 	}
 	
 	public boolean isToolComponent(String variableType) {
-		if (toolWidgetTypes.contains(variableType)) {
-			return true;
-		}
-		return false;
+		return toolWidgetTypes.contains(variableType);
 	}
 	
 }
