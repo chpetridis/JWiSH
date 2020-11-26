@@ -13,7 +13,7 @@ public class StringAdministrator {
 	private String extractInformation(String constructorText, char firstBreakPoint, 
 									  char secondBreakPoint, char startPoint) {
 		
-		String componentName = "";
+		StringBuilder componentName = new StringBuilder();
 		boolean foundStartPoint = false;
 		
 		for (char character : constructorText.toCharArray()) {
@@ -21,16 +21,14 @@ public class StringAdministrator {
 				if (character == firstBreakPoint || character == secondBreakPoint) {
 						break;
 				}
-				componentName += character;
+				componentName.append(character);
 			}
-			
-			if (!(character == startPoint)) {
-				continue;
-			} else {
+
+			if (character == startPoint) {
 				foundStartPoint = true;
 			}
 		}
-		return componentName;
+		return componentName.toString();
 	}
 	
 	public String getVariableTypeFromDeclaration(String declaration) {
@@ -46,7 +44,8 @@ public class StringAdministrator {
 	}
 	
 	private boolean isJavaStandardType(String type) {
-		return type.equals("private") || type.equals("public")
+		return 	  type.equals("private") 
+			   || type.equals("public")
 			   || type.equals("protected")
 			   || type.equals("static")
 			   || type.equals("final");

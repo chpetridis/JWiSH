@@ -11,12 +11,11 @@ import gr.uoi.cs.JWish.ToolCriteria.ToolSpecificCriteria;
 import gr.uoi.cs.JWish.WDG.WDGBuilder;
 
 public abstract class Parser {
-	private String pathToFiles;
-	private ToolFactory factory = new ToolFactory();
+	private final String pathToFiles;
+	private final ToolFactory factory = new ToolFactory();
 	protected ToolSpecificCriteria toolCriteria;
-	protected ArrayList<WDGBuilder> widgetGraphs = new ArrayList<WDGBuilder>();
+	protected ArrayList<WDGBuilder> widgetGraphs = new ArrayList<>();
 	protected StringAdministrator stringAdministrator = new StringAdministrator();
-	
 	protected abstract void findSlices(String stringOfFile);
 
 	public Parser(String pathToFiles) {
@@ -27,7 +26,7 @@ public abstract class Parser {
 		File root = new File(pathToFiles);
 		File[] files = root.listFiles();
  
-		for (File file : files) {
+		for (File file : files != null ? files : new File[0]) {
 			if(file.isFile()){
 				findSlices(readFileToString(file.getAbsolutePath()));
 			}
@@ -39,7 +38,7 @@ public abstract class Parser {
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
  
 		char[] buf = new char[10];
-		int numRead = 0;
+		int numRead;
 		while ((numRead = reader.read(buf)) != -1) {
 			String readData = String.valueOf(buf, 0, numRead);
 			fileData.append(readData);

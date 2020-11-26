@@ -20,8 +20,8 @@ import gr.uoi.cs.JWish.WDG.WDGNode;
 public class ParserAST extends Parser {
 	private static final int JLS = AST.JLS9;
 	private WDGBuilder builder;
-	private HashSet<String> components = new HashSet<String>();
-	private HashSet<String> multiLevelComponents = new HashSet<String>();
+	private final HashSet<String> components = new HashSet<>();
+	private final HashSet<String> multiLevelComponents = new HashSet<>();
 	
 	public ParserAST (String pathToFiles){
 		super (pathToFiles);
