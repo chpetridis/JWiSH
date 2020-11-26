@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class CompositeNode extends WDGNode{
-	private ArrayList<WDGNode> subNodes = new ArrayList<WDGNode>();
+	private final ArrayList<WDGNode> subNodes = new ArrayList<>();
 	
 	public CompositeNode(String nodeID) {
 		super (nodeID);

@@ -2,9 +2,9 @@ package gr.uoi.cs.JWish.WDG;
 
 
 public class SliceFragment {
-	private int fragmentStartPosition;
-	private int fragmentLength;
-	private String fragment;
+	private final int fragmentStartPosition;
+	private final int fragmentLength;
+	private final String fragment;
 	
 	public SliceFragment(String fragment, int fragmentLength, int fragmentStartPosition) {
 		this.fragment = fragment;

@@ -11,7 +11,6 @@ public class PrimitiveNode extends WDGNode{
 	}
 	
 	public void addSubNode(WDGNode node) {
-		return;
 	}
 	
 	public void printNodeInfo(PrintWriter outputStream) {

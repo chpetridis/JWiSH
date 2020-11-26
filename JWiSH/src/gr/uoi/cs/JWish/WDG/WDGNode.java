@@ -9,7 +9,7 @@ public abstract class WDGNode {
 	protected WDGNode parent;
 	private int nodeLevel;
 	private String widgetType;
-	protected ArrayList<SliceFragment> sliceFragments = new ArrayList<SliceFragment>();
+	protected ArrayList<SliceFragment> sliceFragments = new ArrayList<>();
 	
 	abstract public void printNodeInfo(PrintWriter outputStream);
 	abstract public void addSubNode(WDGNode node);
@@ -27,9 +27,7 @@ public abstract class WDGNode {
 	}
 	
 	public void transferStatements(ArrayList<SliceFragment> other) {
-		for (SliceFragment fragment : other) {
-			this.sliceFragments.add(fragment);
-		}
+		this.sliceFragments.addAll(other);
 	}
 
 	public String getNodeID() {

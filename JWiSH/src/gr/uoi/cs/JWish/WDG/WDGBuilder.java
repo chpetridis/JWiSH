@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 
 public class WDGBuilder {
-	private ArrayList<WDGNode> widgetNodes = new ArrayList<WDGNode>();
-	private NodeFactory factory = new NodeFactory();
+	private final ArrayList<WDGNode> widgetNodes = new ArrayList<>();
+	private final NodeFactory factory = new NodeFactory();
 	
 	public void addNode(String nodeID, String nodeType) {
 		widgetNodes.add(factory.createNode(nodeID, nodeType));
