@@ -6,7 +6,7 @@ import gr.uoi.cs.JWish.WDG.WDGBuilder;
 import gr.uoi.cs.JWish.WDG.WDGNode;
 
 public class Slicer {
-	private WDGBuilder graph;
+	private final WDGBuilder graph;
 	
 	public Slicer(WDGBuilder graph) {
 		this.graph = graph;
@@ -21,7 +21,7 @@ public class Slicer {
 	}
 	
 	public ArrayList<WDGNode> getAllWidgetsOfLevel(int level) {
-		ArrayList<WDGNode> specificLevelNodes = new ArrayList<WDGNode>();
+		ArrayList<WDGNode> specificLevelNodes = new ArrayList<>();
 		
 		for (WDGNode node : graph.getAllNodes()) {
 			if (node.getNodeLevel() == level) {
@@ -32,7 +32,7 @@ public class Slicer {
 	}
 	
 	public ArrayList<WDGNode> getSpecificLevelAndTypeWidgets(int level, String widgetType) {
-		ArrayList<WDGNode> specificLevelAndTypeNodes = new ArrayList<WDGNode>();
+		ArrayList<WDGNode> specificLevelAndTypeNodes = new ArrayList<>();
 		
 		for (WDGNode node : graph.getAllNodes()) {
 			if (node.getWidgetType() == null) {
@@ -59,7 +59,7 @@ public class Slicer {
 	}
 	
 	public ArrayList<WDGNode> getAllWidgetsOfType(String widgetType) {
-		ArrayList<WDGNode> specificTypeNodes = new ArrayList<WDGNode>();
+		ArrayList<WDGNode> specificTypeNodes = new ArrayList<>();
 		
 		for (WDGNode node : graph.getAllNodes()) {
 			if (node.getWidgetType() == null) {
